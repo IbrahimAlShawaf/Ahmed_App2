@@ -18,9 +18,7 @@ class _InputScreenState extends State<InputScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder:
-            (context) =>
-                ResultScreen(inputs: _controllers.map((c) => c.text).toList()),
+        builder: (context) => ResultScreen(inputs: _controllers.map((c) => c.text).toList()),
       ),
     );
   }
@@ -28,75 +26,93 @@ class _InputScreenState extends State<InputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                padding: EdgeInsets.all(16.0),
-                alignment: Alignment.center,
-
-                color: Colors.blue[50],
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'مرحبًا بك',
-                      style: TextStyle(fontSize: 20, color: Colors.blue),
-                    ),
-                    Text(
-                      'اسم الطالب رباعي',
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
-                    ),
-                    Text(
-                      ' 1234/2020',
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
-                    ),
-                    //  SizedBox(height: 100),
-                    Expanded(
-                      flex: 2,
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundImage: AssetImage('assets/images/user.jpg'),
+      body: Column(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Container(
+              padding: EdgeInsets.all(16.0),
+              color: Color(0xFFD9EAF7),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'مرحبًا بك',
+                    style: TextStyle(fontSize: 20, color: Colors.blue[700]),
+                  ),
+                  Text(
+                    'اسم الطالب رباعي',
+                    style: TextStyle(fontSize: 16, color: Colors.blue[700]),
+                  ),
+                  Text(
+                    '1234/2020',
+                    style: TextStyle(fontSize: 16, color: Colors.blue[700]),
+                  ),
+                  SizedBox(height: 20),
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('assets/images/user.jpg'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              padding: EdgeInsets.all(20.0),
+              color: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ...List.generate(
+                    4,
+                    (index) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF0F4F8),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: TextField(
+                          controller: _controllers[index],
+                          decoration: InputDecoration(
+                            labelText: [
+                              'اسم الطالب',
+                              'التخصص',
+                              'العام الدراسي',
+                              'المعدل العام',
+                            ][index],
+                            labelStyle: TextStyle(color: Colors.blue[700], fontSize: 16),
+                            border: InputBorder.none,
+                          ),
+                          keyboardType: TextInputType.text,
+                          textAlign: TextAlign.right,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Text('', style: TextStyle(fontSize: 20)),
-            ...List.generate(
-              4,
-              (index) => Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextField(
-                  controller: _controllers[index],
-                  decoration: InputDecoration(
-                    labelText:
-                        [
-                          'اسم الطالب',
-                          'التخصص',
-                          'العام الدراسي',
-                          'المعدل العام',
-                        ][index],
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: InputBorder.none,
                   ),
-                  keyboardType: TextInputType.text,
-                  textAlign: TextAlign.right,
-                ),
+                  SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: _submit,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFF44336),
+                      minimumSize: Size(200, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    child: Text(
+                      'التالي',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(onPressed: _submit, child: Text('متابعة')),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

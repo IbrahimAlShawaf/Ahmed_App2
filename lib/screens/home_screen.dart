@@ -13,44 +13,36 @@ class HomeScreen extends StatelessWidget {
             flex: 2,
             child: Container(
               padding: EdgeInsets.all(16.0),
-              alignment: Alignment.center,
-
-              color: Colors.blue[50],
+              color: Color(0xFFD9EAF7), // لون خلفية مشابه للصورة
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'مرحبًا بك',
-                    style: TextStyle(fontSize: 20, color: Colors.blue),
+                    style: TextStyle(fontSize: 20, color: Colors.black87),
                   ),
                   Text(
                     'اسم الطالب رباعي',
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
+                    style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
                   Text(
-                    ' 1234/2020',
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
+                    '1234/2020',
+                    style: TextStyle(fontSize: 16, color: Colors.black54),
                   ),
-                  //  SizedBox(height: 100),
-                  Expanded(
-                    flex: 2,
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: AssetImage('assets/images/user.jpg'),
-                      ),
-                    ),
+                  SizedBox(height: 20),
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('assets/images/user.jpg'),
                   ),
                 ],
               ),
             ),
           ),
-
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
               padding: EdgeInsets.all(20),
+              color: Colors.white,
               child: GridView.count(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
@@ -58,11 +50,16 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Container(
                     color: Color(0xFFD3E0EA),
-                    child: Center(child: Text('شاشة الصور')),
+                    child: Center(
+                      child: Text(
+                        'شاشة الصور',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
+                    ),
                   ),
                   InkWell(
                     onTap: () {
-                      // Navigate to input form screen
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => InputScreen()),
@@ -70,52 +67,51 @@ class HomeScreen extends StatelessWidget {
                     },
                     child: Container(
                       color: Color(0xFFD3E0EA),
-                      child: Center(child: Text('نموذج الادخال')),
+                      child: Center(
+                        child: Text(
+                          'نموذج الادخال',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                        ),
+                      ),
                     ),
                   ),
                   Container(
                     color: Color(0xFFD3E0EA),
-                    child: Center(child: Text('تسجيل الخروج')),
+                    child: Center(
+                      child: Text(
+                        'تسجيل الخروج',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
+                    ),
                   ),
                   Container(
                     color: Color(0xFFD3E0EA),
-                    child: Center(child: Text('بيانات المستخدم')),
+                    child: Center(
+                      child: Text(
+                        'بيانات المستخدم',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          // Expanded(
-          //   flex: 2,
-          //   child: Container(
-          //     padding: EdgeInsets.all(20),
-          //     child: GridView.count(
-          //       crossAxisCount: 2,
-          //       crossAxisSpacing: 10,
-          //       mainAxisSpacing: 10,
-          //       children: [
-          //         Container(child: _buildButton('شاشة الصور', () {})),
-          //         Container(child: _buildButton('نموذج الادخال', () {})),
-          //         Container(child: _buildButton('تسجيل الخروج', () {})),
-          //         Container(child: _buildButton('بيانات المستخدم', () {})),
-          //       ],
-          //     ),
-          //   ),
-          // ),
         ],
       ),
-    );
-  }
-
-  Widget _buildButton(String text, VoidCallback onPressed) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black54,
-        backgroundColor: Color(0xFFD3E0EA),
-        minimumSize: Size(double.infinity, 100),
-      ),
-      child: Text(text, textAlign: TextAlign.center),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
+      //     BottomNavigationBarItem(icon: Icon(Icons.delete), label: ''),
+      //     BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
+      //     BottomNavigationBarItem(icon: Icon(Icons.share), label: ''),
+      //   ],
+      //   selectedItemColor: Colors.black54,
+      //   unselectedItemColor: Colors.black54,
+      // ),
     );
   }
 }
